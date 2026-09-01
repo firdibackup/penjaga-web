@@ -1,26 +1,272 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* ===========================================================================
+   PT Penjaga Utama Indonesia — design tokens
+   Ported verbatim from the Penjaga Utama Design System (tokens/*.css).
+   Every colour, size, radius and motion value is lifted from the brief.
+   =========================================================================== */
 
 @theme inline {
+  /* fonts (provided by next/font on <html>) */
+  --font-display: var(--font-barlow), Impact, "Arial Narrow", sans-serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-heading: var(--font-display);
+
+  /* brand palette exposed as Tailwind colour utilities */
+  --color-penjaga: var(--penjaga-red);
+  --color-command: var(--command-red);
+  --color-obsidian: var(--obsidian-black);
+  --color-charcoal: var(--shield-charcoal);
+  --color-steel: var(--steel-gray);
+  --color-silver: var(--metal-silver);
+  --color-operational: var(--operational-white);
+  --color-ink: var(--text-ink);
+  --color-hairline: var(--silver-300);
+
+  /* shadcn semantic colours (mapped to brand in :root below) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* radii */
+  --radius-sm: var(--radius-sm-token);
+  --radius-md: var(--radius-md-token);
+  --radius-lg: var(--radius-lg-token);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* --- raw palette (exact hex from the brief) --- */
+  --penjaga-red: #ed1c24;
+  --command-red: #b51219;
+  --obsidian-black: #050505;
+  --shield-charcoal: #292929;
+  --steel-gray: #666666;
+  --metal-silver: #a5a5a5;
+  --operational-white: #f4f4f1;
+  --pure-white: #ffffff;
+  --text-ink: #171717;
+  --charcoal-800: #1c1c1c;
+  --charcoal-600: #3a3a3a;
+  --silver-300: #d8d8d4;
+  --silver-200: #e6e6e2;
+  --red-tint: #fdecec;
+
+  /* --- semantic surfaces --- */
+  --surface-page: var(--operational-white);
+  --surface-card: var(--pure-white);
+  --surface-inverse: var(--obsidian-black);
+  --surface-inverse-soft: var(--shield-charcoal);
+  --surface-muted: var(--silver-200);
+  --surface-accent: var(--penjaga-red);
+  --surface-accent-soft: var(--red-tint);
+  --surface-overlay: rgba(5, 5, 5, 0.58);
+
+  /* --- text --- */
+  --text-body: var(--text-ink);
+  --text-heading: var(--obsidian-black);
+  --text-secondary: var(--steel-gray);
+  --text-inverse: var(--pure-white);
+  --text-inverse-secondary: var(--metal-silver);
+  --text-accent: var(--penjaga-red);
+  --text-on-accent: var(--pure-white);
+
+  /* --- lines --- */
+  --line-hairline: var(--silver-300);
+  --line-strong: var(--metal-silver);
+  --line-inverse: rgba(255, 255, 255, 0.16);
+  --line-accent: var(--penjaga-red);
+
+  /* --- actions --- */
+  --action-primary: var(--penjaga-red);
+  --action-primary-hover: var(--command-red);
+  --action-primary-press: #8e0e14;
+  --action-inverse: var(--obsidian-black);
+  --action-inverse-hover: var(--charcoal-800);
+  --focus-ring: var(--penjaga-red);
+  --disabled-surface: var(--silver-200);
+  --disabled-text: var(--metal-silver);
+
+  /* --- typography scale --- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --text-hero: 76px;
+  --text-hero-mobile: 46px;
+  --text-h1: 52px;
+  --text-h2: 42px;
+  --text-h2-mobile: 32px;
+  --text-h3: 28px;
+  --text-h4: 21px;
+  --text-display-lh: 0.98;
+  --text-display-tracking: 0.005em;
+  --text-lead: 18px;
+  --text-body-size: 16px;
+  --text-small: 14px;
+  --text-micro: 12px;
+  --text-body-lh: 1.6;
+  --text-lead-lh: 1.55;
+  --text-eyebrow: 12.5px;
+  --eyebrow-tracking: 0.16em;
+  --label-tracking: 0.08em;
+  --text-numeral: 64px;
+
+  /* --- spacing / layout --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-30: 120px;
+  --container-max: 1240px;
+  --gutter: 24px;
+  --gutter-desktop: 40px;
+  --section-y: 128px;
+  --section-y-lg: 168px;
+  --section-y-mobile: 72px;
+  --editorial-split: 5fr 7fr;
+
+  /* --- border / elevation --- */
+  --radius-none: 0px;
+  --radius-sm-token: 2px;
+  --radius-md-token: 4px;
+  --radius-lg-token: 6px;
+  --radius-pill: 999px;
+  --border-hairline: 1px;
+  --border-rule: 2px;
+  --border-marker: 3px;
+  --rule-accent: var(--border-rule) solid var(--line-accent);
+  --marker-accent: var(--border-marker) solid var(--line-accent);
+  --border-card: var(--border-hairline) solid var(--line-hairline);
+  --border-card-inverse: var(--border-hairline) solid var(--line-inverse);
+  --shadow-none: none;
+  --shadow-card: 0 1px 2px rgba(5, 5, 5, 0.06);
+  --shadow-raised: 0 2px 8px rgba(5, 5, 5, 0.1);
+  --shadow-overlay: 0 12px 32px rgba(5, 5, 5, 0.22);
+  --shadow-focus: 0 0 0 3px rgba(237, 28, 36, 0.28);
+  --clip-shield-tl: polygon(48px 0, 100% 0, 100% 100%, 0 100%, 0 48px);
+  --clip-shield-br: polygon(0 0, 100% 0, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0 100%);
+  --gradient-protect: linear-gradient(90deg, rgba(5, 5, 5, 0.86) 0%, rgba(5, 5, 5, 0.62) 45%, rgba(5, 5, 5, 0.15) 100%);
+  --gradient-protect-bottom: linear-gradient(180deg, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0.85) 100%);
+
+  /* --- motion --- */
+  --duration-fast: 120ms;
+  --duration-base: 220ms;
+  --duration-reveal: 520ms;
+  --duration-zoom: 6000ms;
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-line: cubic-bezier(0.65, 0, 0.35, 1);
+  --fade-up-distance: 16px;
+  --press-scale: 0.985;
+
+  /* --- shadcn semantic aliases mapped to the brand --- */
+  --background: var(--operational-white);
+  --foreground: var(--text-ink);
+  --card: var(--pure-white);
+  --card-foreground: var(--text-ink);
+  --popover: var(--pure-white);
+  --popover-foreground: var(--text-ink);
+  --primary: var(--penjaga-red);
+  --primary-foreground: var(--pure-white);
+  --secondary: var(--obsidian-black);
+  --secondary-foreground: var(--pure-white);
+  --muted: var(--silver-200);
+  --muted-foreground: var(--steel-gray);
+  --accent: var(--red-tint);
+  --accent-foreground: var(--penjaga-red);
+  --destructive: var(--command-red);
+  --border: var(--silver-300);
+  --input: var(--silver-300);
+  --ring: var(--penjaga-red);
+  --radius: 0.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+  body {
+    margin: 0;
+    background: var(--surface-page);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-lh);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    color: var(--text-heading);
+    text-transform: uppercase;
+    line-height: var(--text-display-lh);
+    letter-spacing: var(--text-display-tracking);
+    margin: 0;
+  }
+  h4 {
+    font-weight: var(--weight-semibold);
+  }
+  p {
+    margin: 0;
+  }
+  ::selection {
+    background: var(--penjaga-red);
+    color: var(--pure-white);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Hero scroll cue: a red rule that scales down from top then bottom. */
+@keyframes penjaga-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: 0 0;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: 0 0;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: 0 100%;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: 0 100%;
+  }
 }
