@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Cctv, Fingerprint, RadioTower, Siren } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
@@ -48,7 +49,18 @@ const STAGES: Stage[] = [
 /** Conceptual security console — an illustration, not a real product screen. */
 function Console() {
   const reduce = useReducedMotion();
-  const tiles = ["CAM 01 · LOBBY", "CAM 02 · GATE", "CAM 03 · P1", "CAM 04 · PERIMETER"];
+  const tiles = [
+    {
+      src: "/assets/smart-security/1.webp",
+      label: "CAM 01 · MONITORING",
+      alt: "Sistem monitoring keamanan",
+    },
+    {
+      src: "/assets/smart-security/2.webp",
+      label: "CAM 02 · ACCESS CONTROL",
+      alt: "Sistem access control keamanan",
+    },
+  ];
   return (
     <div className="relative border border-white/[0.12] bg-charcoal">
       <div className="flex items-center justify-between border-b border-white/[0.12] px-4 py-3">
@@ -71,21 +83,22 @@ function Console() {
       </div>
 
       <div className="grid grid-cols-2 gap-px bg-white/[0.08] p-px">
-        {tiles.map((t, i) => (
+        {tiles.map((tile, i) => (
           <div
-            key={t}
-            className="relative aspect-[4/3] overflow-hidden bg-[radial-gradient(120%_120%_at_70%_20%,#1a1a1a_0%,#0a0a0a_70%,#050505_100%)]"
+            key={tile.src}
+            className="relative aspect-[4/3] overflow-hidden bg-black"
           >
-            <div
-              className="absolute inset-0 opacity-40"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 6px)",
-              }}
+            <Image
+              src={tile.src}
+              alt={tile.alt}
+              fill
+              sizes="(max-width: 639px) 50vw, 25vw"
+              className="object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/25" />
             {!reduce && (
               <motion.span
-                className="absolute inset-x-0 h-8 bg-[linear-gradient(180deg,transparent,rgba(237,28,36,.12),transparent)]"
+                className="absolute inset-x-0 h-8 bg-[linear-gradient(180deg,transparent,rgba(237,28,36,.16),transparent)]"
                 initial={{ top: "-20%" }}
                 animate={{ top: ["-20%", "120%"] }}
                 transition={{
@@ -96,21 +109,19 @@ function Console() {
                 }}
               />
             )}
-            <span className="absolute left-2 top-2 font-mono text-[8.5px] uppercase tracking-[0.12em] text-white/45">
-              {t}
+            <span className="absolute left-2 top-2 font-mono text-[8.5px] uppercase tracking-[0.12em] text-white/75">
+              {tile.label}
             </span>
-            {i === 1 && (
-              <span className="absolute bottom-2 right-2 border border-penjaga/60 bg-penjaga/15 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em] text-penjaga">
-                Motion
-              </span>
-            )}
+            <span className="absolute bottom-2 right-2 border border-penjaga/60 bg-penjaga/15 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em] text-penjaga">
+              {i === 0 ? "Monitoring" : "Access"}
+            </span>
           </div>
         ))}
       </div>
 
       <div className="flex items-center justify-between gap-3 border-t border-white/[0.12] px-4 py-3">
         <span className="font-mono text-[9.5px] uppercase tracking-[0.12em] text-white/45">
-          Access · 4 titik aktif
+           Access · 2 titik aktif
         </span>
         <span className="flex items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.12em] text-white/60">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />

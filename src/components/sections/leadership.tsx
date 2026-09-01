@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
+
 import { Container, Eyebrow } from "@/components/kit";
-import { Placeholder } from "@/components/placeholder";
 import { Reveal } from "@/components/motion/reveal";
 
 type Person = {
@@ -18,14 +19,14 @@ const PEOPLE: Person[] = [
     name: "Dr. Enrico Mulawarman",
     role: "Founder — PT. Primer Utama Indonesia & Diva Valet",
     bio: "Founder PT. Primer Utama Indonesia dan Diva Valet (PT. Jumadi). Meraih gelar Ph.D. di bidang Anthropology dari University of Indonesia, tercatat sebagai Faculty Member di Binus University, dan menjabat sebagai President Director di perusahaan.",
-    photo: "Portrait · Dr. Enrico Mulawarman",
+    photo: "/assets/mentor/enrico.webp",
   },
   {
     no: "02",
     name: "Nius Maapanawang",
     role: "Leadership & Operational Expertise",
     bio: "Purnawirawan Indonesian Special Force Army (KOPASSUS) yang bergabung untuk berkontribusi sebagai pemimpin dan mendukung pengembangan tim. Latar belakang struktur serta praktik militer menjadi aset dalam industri Physical Security dan Manned Guarding.",
-    photo: "Portrait · Nius Maapanawang",
+    photo: "/assets/mentor/nius.webp",
   },
 ];
 
@@ -57,12 +58,13 @@ export function Leadership() {
               delay={i * 0.1}
               className="group flex flex-col border border-white/[0.12] bg-charcoal sm:flex-row"
             >
-              <div className="relative w-full shrink-0 sm:w-[38%]">
-                <Placeholder
-                  label={p.photo}
-                  onDark
-                  parallax
-                  className="h-[240px] w-full sm:h-full sm:min-h-[300px]"
+              <div className="relative h-[240px] w-full shrink-0 overflow-hidden sm:h-auto sm:min-h-[300px] sm:w-[38%]">
+                <Image
+                  src={p.photo}
+                  alt={p.name}
+                  fill
+                  sizes="(max-width: 639px) 100vw, 38vw"
+                  className="object-cover"
                 />
               </div>
               <div className="flex flex-1 flex-col p-6 md:p-8">
@@ -84,11 +86,11 @@ export function Leadership() {
           ))}
         </div>
 
-        <Reveal delay={0.1}>
+        {/* <Reveal delay={0.1}>
           <p className="mt-8 border-l-[3px] border-white/20 pl-4 font-mono text-[11px] uppercase leading-[1.6] tracking-[0.1em] text-white/40">
             Sumber: company profile Premier Valet / PT. Primer Utama Indonesia.
           </p>
-        </Reveal>
+        </Reveal> */}
       </Container>
     </section>
   );

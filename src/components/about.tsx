@@ -39,23 +39,18 @@ export function About() {
           <Reveal className="lg:sticky lg:top-[120px]">
             <div
               ref={imageRef}
-              className="relative h-[380px] overflow-hidden bg-charcoal sm:h-[500px] lg:h-[600px]"
+              className="relative h-[380px] w-full overflow-hidden bg-charcoal sm:h-[500px] lg:h-[600px] lg:w-[calc(100%+40px)]"
               style={{ clipPath: "var(--clip-shield-tl)" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <motion.img
-                src="/assets/about-briefing.png"
+                src="/assets/about-briefing.webp"
                 alt="Personel Penjaga Utama saat briefing sebelum penugasan"
                 style={{ y: reduce ? 0 : y }}
-                className="absolute left-0 top-[-8%] h-[116%] w-full object-cover [will-change:transform]"
+                className="absolute left-0 top-[-8%] h-[116%] w-full object-cover object-[30%_60%] [will-change:transform] "
               />
             </div>
-            <div className="mt-5 flex items-center gap-3">
-              <span className="block h-0.5 w-[44px] bg-penjaga" />
-              <span className="font-mono text-[11.5px] uppercase tracking-[0.1em] text-steel">
-                Briefing personel sebelum penugasan
-              </span>
-            </div>
+           
           </Reveal>
 
           {/* --- copy + company data (right) --- */}
@@ -102,7 +97,7 @@ export function About() {
             </Reveal>
 
             {/* --- Data Perusahaan --- */}
-            <Reveal delay={0.16}>
+            {/* <Reveal delay={0.16}>
               <div className="mt-10 border-t border-[var(--line-hairline)] pt-6 sm:mt-12">
                 <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-steel">
                   Data Perusahaan
@@ -123,7 +118,7 @@ export function About() {
                   ))}
                 </dl>
               </div>
-            </Reveal>
+            </Reveal> */}
           </div>
         </div>
       </Container>

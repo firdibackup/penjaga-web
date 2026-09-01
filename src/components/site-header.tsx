@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const NAV = [
@@ -61,19 +62,13 @@ export function SiteHeader() {
           aria-label="PT Penjaga Utama Indonesia"
           className="relative block h-[30px] min-w-0 flex-1 sm:flex-none md:h-[38px]"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/logo-horizontal-dark-notag.svg"
+          <Image
+            src="/assets/logo-penjaga-no-label.svg"
             alt="PT Penjaga Utama Indonesia"
-            className="block h-[30px] max-w-full transition-opacity duration-300 md:h-[38px]"
-            style={{ opacity: solid ? 0 : 1 }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/logo-horizontal-light-notag.svg"
-            alt=""
-            className="absolute left-0 top-0 block h-[30px] max-w-full transition-opacity duration-300 md:h-[38px]"
-            style={{ opacity: solid ? 1 : 0 }}
+            width={706}
+            height={159}
+            className="block h-[30px] w-auto max-w-full transition-[filter] duration-300 md:h-[38px]"
+            style={{ filter: solid ? "none" : "brightness(0) invert(1)" }}
           />
         </a>
 

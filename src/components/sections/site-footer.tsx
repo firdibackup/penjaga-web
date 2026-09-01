@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Container } from "@/components/kit";
 
 const NAV: { href: string; label: string }[] = [
@@ -16,11 +18,12 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[5fr_3fr_4fr] md:gap-12">
           {/* brand */}
           <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/logo-horizontal-light-notag.svg"
+            <Image
+              src="/assets/logo-penjaga-no-label.svg"
               alt="PT Penjaga Utama Indonesia"
-              className="h-9 w-auto"
+              width={706}
+              height={159}
+              className="h-auto w-[230px] brightness-0 invert sm:w-[270px]"
             />
             <p className="mt-5 max-w-[320px] text-[14.5px] leading-[1.6] text-white/55">
               Layanan keamanan dan valet parking profesional untuk gedung,

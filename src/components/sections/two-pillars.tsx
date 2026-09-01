@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Container, Eyebrow } from "@/components/kit";
-import { Placeholder } from "@/components/placeholder";
 import { Reveal } from "@/components/motion/reveal";
 
 type Pillar = {
@@ -12,6 +12,7 @@ type Pillar = {
   cta: string;
   href: string;
   photo: string;
+  alt: string;
   onDark: boolean;
 };
 
@@ -22,7 +23,8 @@ const PILLARS: Pillar[] = [
     copy: "Menjaga aset, lingkungan, dan orang-orang yang penting bagi Anda.",
     cta: "Explore Security",
     href: "#security",
-    photo: "Security Officer · CCTV Overlay",
+    photo: "/assets/services/security.webp",
+    alt: "Petugas security sedang bertugas",
     onDark: true,
   },
   {
@@ -31,8 +33,9 @@ const PILLARS: Pillar[] = [
     copy: "Menciptakan pengalaman kedatangan yang lebih nyaman dan profesional.",
     cta: "Explore Valet",
     href: "#valet",
-    photo: "Valet Officer · Luxury Vehicle",
-    onDark: false,
+    photo: "/assets/services/valet.webp",
+    alt: "Petugas valet melayani kendaraan pelanggan",
+    onDark: true,
   },
 ];
 
@@ -60,11 +63,12 @@ export function TwoPillars() {
               delay={i * 0.1}
               className="group relative min-h-[440px] overflow-hidden border border-[var(--line-hairline)] md:min-h-[560px]"
             >
-              <Placeholder
-                label={p.photo}
-                onDark={p.onDark}
-                parallax
-                className="absolute inset-0 h-full w-full"
+              <Image
+                src={p.photo}
+                alt={p.alt}
+                fill
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className="object-cover"
               />
               <div
                 className="absolute inset-0"
