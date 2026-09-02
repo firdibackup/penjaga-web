@@ -99,7 +99,7 @@ export function About() {
             </Reveal>
 
             {/* --- Data Perusahaan --- */}
-            <Reveal delay={0.16}>
+            {/* <Reveal delay={0.16}>
               <div className="mt-10 border-t border-[var(--line-hairline)] pt-6 sm:mt-12">
                 <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-steel">
                   Data Perusahaan
@@ -120,7 +120,7 @@ export function About() {
                   ))}
                 </dl>
               </div>
-            </Reveal>
+            </Reveal> */}
           </div>
         </div>
       </Container>

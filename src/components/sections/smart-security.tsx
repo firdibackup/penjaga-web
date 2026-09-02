@@ -2,6 +2,7 @@
 
 import { Cctv, Fingerprint, RadioTower, Siren } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
 import { useReducedMotion } from "motion/react";
 import * as m from "motion/react-m";
 import { Container, Eyebrow } from "@/components/kit";
@@ -46,9 +47,20 @@ const STAGES: Stage[] = [
   },
 ];
 
-const CONSOLE_TILES = ["CAM 01 · LOBBY", "CAM 02 · GATE", "CAM 03 · P1", "CAM 04 · PERIMETER"];
+const TILES: { src: string; label: string; alt: string }[] = [
+  {
+    src: "/assets/smart-security/1.webp",
+    label: "01 · Ruang Kontrol",
+    alt: "Operator keamanan memantau layar CCTV di ruang kontrol",
+  },
+  {
+    src: "/assets/smart-security/2.webp",
+    label: "02 · Koordinasi Lapangan",
+    alt: "Personel keamanan berkoordinasi menggunakan peta area",
+  },
+];
 
-/** Conceptual security console — an illustration, not a real product screen. */
+/** Security console framing real operational photography. */
 function Console() {
   const reduce = useReducedMotion();
   return (
@@ -72,23 +84,24 @@ function Console() {
         </span>
       </div>
 
-      <div className="grid grid-cols-2 gap-px bg-white/[0.08] p-px">
-        {CONSOLE_TILES.map((t, i) => (
+      <div className="grid grid-cols-1 gap-px bg-white/[0.08] p-px">
+        {TILES.map((tile, i) => (
           <div
-            key={t}
-            className="relative aspect-[4/3] overflow-hidden bg-[radial-gradient(120%_120%_at_70%_20%,#1a1a1a_0%,#0a0a0a_70%,#050505_100%)]"
+            key={tile.src}
+            className="relative aspect-video overflow-hidden bg-black"
           >
-            <div
-              className="absolute inset-0 opacity-40"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 6px)",
-              }}
+            <Image
+              src={tile.src}
+              alt={tile.alt}
+              fill
+              sizes="(max-width: 1023px) 100vw, 45vw"
+              className="object-cover"
             />
+            {/* keep monitor overlays legible over the photo */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
             {!reduce && (
               // Full-tile layer translated on the compositor (translateY), with
-              // the gradient band pinned to its top edge — same sweep as the old
-              // `top: -20% → 120%` but without a per-frame layout pass.
+              // the gradient band pinned to its top edge — a subtle scan sweep.
               <m.span
                 aria-hidden
                 className="absolute inset-0"
@@ -104,12 +117,13 @@ function Console() {
                 <span className="absolute inset-x-0 top-0 h-8 bg-[linear-gradient(180deg,transparent,rgba(237,28,36,.12),transparent)]" />
               </m.span>
             )}
-            <span className="absolute left-2 top-2 font-mono text-[8.5px] uppercase tracking-[0.12em] text-white/45">
-              {t}
+            <span className="absolute left-2 top-2 font-mono text-[8.5px] uppercase tracking-[0.12em] text-white/70">
+              {tile.label}
             </span>
-            {i === 1 && (
-              <span className="absolute bottom-2 right-2 border border-penjaga/60 bg-penjaga/15 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em] text-penjaga">
-                Motion
+            {i === 0 && (
+              <span className="absolute bottom-2 right-2 flex items-center gap-1.5 border border-penjaga/60 bg-penjaga/15 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em] text-penjaga">
+                <span className="h-1 w-1 rounded-full bg-penjaga" />
+                Rec
               </span>
             )}
           </div>
@@ -118,7 +132,7 @@ function Console() {
 
       <div className="flex items-center justify-between gap-3 border-t border-white/[0.12] px-4 py-3">
         <span className="font-mono text-[9.5px] uppercase tracking-[0.12em] text-white/45">
-          Access · 4 titik aktif
+          Access · 2 titik aktif
         </span>
         <span className="flex items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.12em] text-white/60">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />

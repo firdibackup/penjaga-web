@@ -25,6 +25,7 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
+        <Industries />
         <ServiceHighlights />
         <About />
         <Partner />
@@ -36,7 +37,6 @@ export default function Home() {
         {/* <ValetExperience /> */}
         <WhyChooseUs />
         <SecurityVsValet />
-        <Industries />
         <ServiceProcess />
         {/* <Gallery /> */}
         <TrustBlock />
