@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { useReducedMotion, useScroll, useTransform } from "motion/react";
+import * as m from "motion/react-m";
 import { Container, Eyebrow } from "@/components/kit";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -10,7 +11,7 @@ const DATA: { k: string; v: string }[] = [
   { k: "Bidang", v: "Security Service & Valet Parking" },
   {
     k: "Riwayat Valet Partner",
-    v: "Sejak 2003 melalui Diva Valet Parking Service; Premier Valet sejak 2014",
+    v: "Premier Valet sejak 2014",
   },
   { k: "Partner Valet", v: "PT. Primer Utama Indonesia / Premier Valet" },
   {
@@ -43,7 +44,7 @@ export function About() {
               style={{ clipPath: "var(--clip-shield-tl)" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <motion.img
+              <m.img
                 src="/assets/about-briefing.png"
                 alt="Personel Penjaga Utama saat briefing sebelum penugasan"
                 style={{ y: reduce ? 0 : y }}
@@ -83,12 +84,8 @@ export function About() {
                   didukung oleh tim profesional yang berpengalaman.
                 </p>
                 <p className="text-[16.5px] leading-[1.66] text-[#3a3a3a]">
-                  Untuk lini Valet Parking, pengalaman operasional kami berawal
-                  dari{" "}
-                  <span className="font-semibold text-ink">
-                    Diva Valet Parking Service pada 2003
-                  </span>{" "}
-                  dan berkembang menjadi{" "}
+                  Untuk lini Valet Parking, pengalaman operasional kami didukung
+                  oleh{" "}
                   <span className="font-semibold text-ink">
                     Premier Valet sejak 2014
                   </span>

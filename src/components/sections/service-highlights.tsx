@@ -61,7 +61,9 @@ export function ServiceHighlights() {
                 delay={i * 0.08}
                 className="group relative border-b border-r border-[var(--line-hairline)] bg-white p-6 transition-colors duration-300 hover:bg-[var(--surface-page)] md:p-8"
               >
-                <span className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-penjaga transition-transform duration-300 ease-[var(--ease-standard)] group-hover:scale-x-100" />
+                <span className="absolute inset-x-0 top-0 h-[2px] overflow-hidden">
+                  <span className="block h-full w-full -translate-x-full bg-penjaga transition-transform duration-300 ease-[var(--ease-standard)] group-hover:translate-x-0" />
+                </span>
                 <div className="flex items-start justify-between">
                   <span className="inline-flex h-12 w-12 items-center justify-center border border-[var(--line-hairline)] text-obsidian transition-colors duration-300 group-hover:border-penjaga group-hover:text-penjaga">
                     <Icon className="h-6 w-6" strokeWidth={1.75} />

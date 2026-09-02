@@ -1,7 +1,8 @@
 "use client";
 
 import { ArrowRight, Phone } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
+import * as m from "motion/react-m";
 import { Container, Eyebrow, ShieldGlyph } from "@/components/kit";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -10,7 +11,7 @@ export function FinalCTA() {
   return (
     <section className="relative overflow-hidden bg-obsidian py-[84px] md:py-[150px]">
       {/* drifting red glow — the brief's subtle #BC2027 → #ED1C24 movement */}
-      <motion.div
+      <m.div
         aria-hidden
         className="pointer-events-none absolute -right-[10%] top-1/2 h-[560px] w-[560px] -translate-y-1/2 rounded-full opacity-60 blur-[90px]"
         style={{

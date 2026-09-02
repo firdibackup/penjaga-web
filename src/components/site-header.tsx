@@ -86,7 +86,9 @@ export function SiteHeader() {
               style={{ color: solid ? "var(--obsidian-black)" : "#ffffff" }}
             >
               {item.label}
-              <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-penjaga transition-transform duration-300 ease-[var(--ease-standard)] group-hover:scale-x-100" />
+              <span className="absolute inset-x-0 bottom-0 h-0.5 overflow-hidden">
+                <span className="block h-full w-full -translate-x-full bg-penjaga transition-transform duration-300 ease-[var(--ease-standard)] group-hover:translate-x-0" />
+              </span>
             </a>
           ))}
         </nav>

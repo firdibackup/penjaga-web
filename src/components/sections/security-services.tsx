@@ -89,7 +89,9 @@ export function SecurityServices() {
                   </span>
                 </div>
                 <div className="relative flex flex-1 flex-col p-6 md:p-7">
-                  <span className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-penjaga transition-transform duration-300 ease-[var(--ease-standard)] group-hover:scale-x-100" />
+                  <span className="absolute inset-x-0 top-0 h-[2px] overflow-hidden">
+                    <span className="block h-full w-full -translate-x-full bg-penjaga transition-transform duration-300 ease-[var(--ease-standard)] group-hover:translate-x-0" />
+                  </span>
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="font-display text-[21px] font-semibold uppercase leading-[1.05] text-obsidian">
                       {s.title}
@@ -102,7 +104,7 @@ export function SecurityServices() {
                     {s.body}
                   </p>
                   <ArrowUpRight
-                    className="mt-5 h-5 w-5 text-steel transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:text-penjaga"
+                    className="mt-5 h-5 w-5 text-steel transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:text-penjaga"
                     strokeWidth={1.75}
                   />
                 </div>

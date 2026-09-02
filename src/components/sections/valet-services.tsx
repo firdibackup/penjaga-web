@@ -89,7 +89,9 @@ export function ValetServices() {
                   </span>
                 </div>
                 <div className="relative flex flex-1 flex-col p-6">
-                  <span className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-penjaga transition-transform duration-300 ease-[var(--ease-standard)] group-hover:scale-x-100" />
+                  <span className="absolute inset-x-0 top-0 h-[2px] overflow-hidden">
+                    <span className="block h-full w-full -translate-x-full bg-penjaga transition-transform duration-300 ease-[var(--ease-standard)] group-hover:translate-x-0" />
+                  </span>
                   <h3 className="font-display text-[20px] font-semibold uppercase leading-[1.05] text-obsidian">
                     {v.title}
                   </h3>

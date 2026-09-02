@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { MotionProvider } from "@/components/motion/provider";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-barlow",
@@ -36,7 +37,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="id"
       className={`${barlowCondensed.variable} ${plexSans.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }

@@ -7,7 +7,6 @@ import { Reveal } from "@/components/motion/reveal";
 const FACTS: { k: string; v: string }[] = [
   { k: "Brand", v: "Premier Valet" },
   { k: "Legal Entity", v: "PT. Primer Utama Indonesia" },
-  { k: "Heritage", v: "Diva Valet Parking Service — sejak 2003" },
   { k: "Premier Valet", v: "Sejak 2014" },
   { k: "Telepon", v: "+62 21 632 7390" },
   { k: "Email", v: "info@premierutama.co.id" },
@@ -55,7 +54,7 @@ export function Partner() {
                     <div
                       key={f.k}
                       className={`px-5 py-4 ${
-                        i % 2 === 0 ? "sm:border-r" : ""
+                        i % 2 === 0 && i !== FACTS.length - 1 ? "sm:border-r" : ""
                       } border-b border-[var(--line-hairline)] last:border-b-0 sm:[&:nth-last-child(2)]:border-b-0`}
                     >
                       <dt className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-steel">

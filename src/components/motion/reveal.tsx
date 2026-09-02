@@ -1,12 +1,8 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "motion/react";
+import { useScroll, useTransform, useReducedMotion } from "motion/react";
+import * as m from "motion/react-m";
 import { cn } from "@/lib/utils";
 
 // The brief allows three moves only: fade-up, line-reveal, subtle image-zoom.
@@ -36,7 +32,7 @@ export function Reveal({
 }: RevealProps) {
   const reduce = useReducedMotion();
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={reduce ? { opacity: 0 } : { opacity: 0, y }}
       whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -44,7 +40,7 @@ export function Reveal({
       transition={{ duration: 0.62, ease: EASE, delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -61,7 +57,7 @@ export function LineReveal({ className, delay = 0, axis = "h" }: LineRevealProps
   const from = axis === "h" ? { scaleX: 0 } : { scaleY: 0 };
   const to = axis === "h" ? { scaleX: 1 } : { scaleY: 1 };
   return (
-    <motion.span
+    <m.span
       aria-hidden
       className={cn("block bg-penjaga", className)}
       style={{ transformOrigin: axis === "h" ? "left center" : "top center" }}
@@ -96,12 +92,12 @@ export function Parallax({ children, className, distance = 10 }: ParallaxProps) 
   );
   return (
     <div ref={ref} className={cn("relative overflow-hidden", className)}>
-      <motion.div
-        className="absolute left-0 right-0 will-change-transform"
+      <m.div
+        className="absolute left-0 right-0"
         style={{ y: reduce ? 0 : y, top: `-${distance}%`, bottom: `-${distance}%` }}
       >
         {children}
-      </motion.div>
+      </m.div>
     </div>
   );
 }

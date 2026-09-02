@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { useScroll, useTransform, useReducedMotion } from "motion/react";
+import * as m from "motion/react-m";
 import { cn } from "@/lib/utils";
 import { ShieldGlyph } from "@/components/kit";
 
@@ -52,10 +53,10 @@ export function Placeholder({
       )}
       style={{ clipPath: clipMap[clip] }}
     >
-      <motion.div
+      <m.div
         aria-hidden
         style={{ y: parallax && !reduce ? y : 0 }}
-        className="absolute -inset-y-[10%] inset-x-0 will-change-transform"
+        className="absolute -inset-y-[10%] inset-x-0"
       >
         <div
           className={cn(
@@ -79,7 +80,7 @@ export function Placeholder({
             onDark ? "text-white/[0.055]" : "text-obsidian/[0.06]",
           )}
         />
-      </motion.div>
+      </m.div>
 
       {/* centre label */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 px-6 text-center">

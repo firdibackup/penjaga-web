@@ -2,7 +2,8 @@
 
 import { Cctv, Fingerprint, RadioTower, Siren } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
+import * as m from "motion/react-m";
 import { Container, Eyebrow } from "@/components/kit";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -45,17 +46,18 @@ const STAGES: Stage[] = [
   },
 ];
 
+const CONSOLE_TILES = ["CAM 01 · LOBBY", "CAM 02 · GATE", "CAM 03 · P1", "CAM 04 · PERIMETER"];
+
 /** Conceptual security console — an illustration, not a real product screen. */
 function Console() {
   const reduce = useReducedMotion();
-  const tiles = ["CAM 01 · LOBBY", "CAM 02 · GATE", "CAM 03 · P1", "CAM 04 · PERIMETER"];
   return (
     <div className="relative border border-white/[0.12] bg-charcoal">
       <div className="flex items-center justify-between border-b border-white/[0.12] px-4 py-3">
         <span className="flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.16em] text-white/70">
           <span className="relative flex h-2 w-2">
             {!reduce && (
-              <motion.span
+              <m.span
                 className="absolute inset-0 rounded-full bg-penjaga"
                 animate={{ opacity: [0.9, 0.1, 0.9], scale: [1, 1.9, 1] }}
                 transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
@@ -71,7 +73,7 @@ function Console() {
       </div>
 
       <div className="grid grid-cols-2 gap-px bg-white/[0.08] p-px">
-        {tiles.map((t, i) => (
+        {CONSOLE_TILES.map((t, i) => (
           <div
             key={t}
             className="relative aspect-[4/3] overflow-hidden bg-[radial-gradient(120%_120%_at_70%_20%,#1a1a1a_0%,#0a0a0a_70%,#050505_100%)]"
@@ -84,17 +86,23 @@ function Console() {
               }}
             />
             {!reduce && (
-              <motion.span
-                className="absolute inset-x-0 h-8 bg-[linear-gradient(180deg,transparent,rgba(237,28,36,.12),transparent)]"
-                initial={{ top: "-20%" }}
-                animate={{ top: ["-20%", "120%"] }}
+              // Full-tile layer translated on the compositor (translateY), with
+              // the gradient band pinned to its top edge — same sweep as the old
+              // `top: -20% → 120%` but without a per-frame layout pass.
+              <m.span
+                aria-hidden
+                className="absolute inset-0"
+                initial={{ y: "-20%" }}
+                animate={{ y: ["-20%", "120%"] }}
                 transition={{
                   duration: 3.6,
                   repeat: Infinity,
                   ease: "linear",
                   delay: i * 0.9,
                 }}
-              />
+              >
+                <span className="absolute inset-x-0 top-0 h-8 bg-[linear-gradient(180deg,transparent,rgba(237,28,36,.12),transparent)]" />
+              </m.span>
             )}
             <span className="absolute left-2 top-2 font-mono text-[8.5px] uppercase tracking-[0.12em] text-white/45">
               {t}
@@ -211,11 +219,17 @@ function FlowPulse({ delay = 0 }: { delay?: number }) {
   const reduce = useReducedMotion();
   if (reduce) return null;
   return (
-    <motion.span
-      className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-penjaga shadow-[0_0_10px_2px_rgba(237,28,36,.6)]"
-      initial={{ left: "0%" }}
-      animate={{ left: ["0%", "100%"] }}
+    // Full-width track layer translated on the compositor (translateX); the dot
+    // rides its left edge, so it sweeps the same 0% → 100% as before without
+    // animating `left` (which would relayout the row every frame).
+    <m.span
+      aria-hidden
+      className="absolute inset-x-0 top-1/2"
+      initial={{ x: "0%" }}
+      animate={{ x: ["0%", "100%"] }}
       transition={{ duration: 2.1, repeat: Infinity, repeatDelay: 0.5, ease: "linear", delay }}
-    />
+    >
+      <span className="absolute left-0 top-0 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-penjaga shadow-[0_0_10px_2px_rgba(237,28,36,.6)]" />
+    </m.span>
   );
 }
