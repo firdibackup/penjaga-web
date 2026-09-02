@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, Briefcase, CalendarDays, Hotel, ShoppingBag, UtensilsCrossed } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Container, Eyebrow } from "@/components/kit";
-import { Placeholder } from "@/components/placeholder";
 import { Reveal } from "@/components/motion/reveal";
 
 type Valet = {
@@ -11,6 +11,7 @@ type Valet = {
   title: string;
   body: string;
   photo: string;
+  alt: string;
 };
 
 const VALET: Valet[] = [
@@ -18,31 +19,36 @@ const VALET: Valet[] = [
     icon: Hotel,
     title: "Hotel & Resort",
     body: "Layanan valet elegan dan profesional untuk pengalaman kedatangan tamu yang lebih nyaman.",
-    photo: "Hotel Entrance · Valet Officer",
+    photo: "/assets/valet-service/hotel.webp",
+    alt: "Layanan valet di hotel dan resort",
   },
   {
     icon: UtensilsCrossed,
     title: "Restoran & Kafe",
     body: "Membantu pelanggan menikmati pengalaman bersantap tanpa repot mencari tempat parkir.",
-    photo: "Restaurant Entrance · Valet",
+    photo: "/assets/valet-service/restoran.webp",
+    alt: "Layanan valet di restoran dan kafe",
   },
   {
     icon: ShoppingBag,
     title: "Pusat Perbelanjaan",
     body: "Solusi valet untuk kenyamanan pelanggan di area komersial dengan kebutuhan parkir tinggi.",
-    photo: "Mall Drop-off Area",
+    photo: "/assets/valet-service/pusat-pembelanjaan.webp",
+    alt: "Layanan valet di pusat perbelanjaan",
   },
   {
     icon: CalendarDays,
     title: "Event",
     body: "Layanan valet untuk pernikahan, konser, konferensi, dan pameran.",
-    photo: "Event Entrance · Multiple Vehicles",
+    photo: "/assets/valet-service/event.webp",
+    alt: "Layanan valet untuk acara dan event",
   },
   {
     icon: Briefcase,
     title: "Perusahaan & Kantor",
     body: "Layanan valet untuk perusahaan dan kantor yang mengutamakan kenyamanan eksekutif dan tamu.",
-    photo: "Corporate Office Entrance",
+    photo: "/assets/valet-service/kantor.webp",
+    alt: "Layanan valet di perusahaan dan kantor",
   },
 ];
 
@@ -77,13 +83,15 @@ export function ValetServices() {
                 delay={(i % 3) * 0.08}
                 className="group flex w-[80%] shrink-0 snap-start flex-col border border-[var(--line-hairline)] bg-white md:w-auto"
               >
-                <div className="relative overflow-hidden">
-                  <Placeholder
-                    label={v.photo}
-                    onDark={false}
-                    parallax
-                    className="h-[190px] w-full transition-transform duration-[900ms] ease-[var(--ease-standard)] group-hover:scale-[1.04]"
+                <div className="relative h-[190px] overflow-hidden">
+                  <Image
+                    src={v.photo}
+                    alt={v.alt}
+                    fill
+                    sizes="(max-width: 767px) 80vw, 33vw"
+                    className="object-cover transition-transform duration-[900ms] ease-[var(--ease-standard)] group-hover:scale-[1.04]"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
                   <span className="absolute left-4 top-4 z-20 inline-flex h-9 w-9 items-center justify-center border border-[var(--line-hairline)] bg-white text-penjaga">
                     <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
                   </span>

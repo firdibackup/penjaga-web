@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUpRight, ShieldCheck, Building2, CalendarDays, Footprints } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Container, Eyebrow } from "@/components/kit";
-import { Placeholder } from "@/components/placeholder";
 import { Reveal } from "@/components/motion/reveal";
 
 type Service = {
@@ -12,6 +12,7 @@ type Service = {
   title: string;
   body: string;
   photo: string;
+  alt: string;
 };
 
 const SERVICES: Service[] = [
@@ -20,28 +21,32 @@ const SERVICES: Service[] = [
     icon: ShieldCheck,
     title: "Jasa Keamanan Pribadi",
     body: "Pengamanan individu untuk keperluan pribadi, eksekutif, atau keluarga yang membutuhkan perlindungan lebih intensif dalam kegiatan sehari-hari.",
-    photo: "Executive Protection · Bodyguard",
+    photo: "/assets/service-security/pengawal-pribadi.webp",
+    alt: "Petugas pengawal pribadi profesional",
   },
   {
     no: "02",
     icon: Building2,
     title: "Keamanan Properti & Gedung",
     body: "Pengamanan perumahan, perkantoran, fasilitas industri, serta tempat umum dengan pengawasan 24/7 melalui CCTV dan perangkat keamanan lainnya.",
-    photo: "Security Officer · Commercial Lobby",
+    photo: "/assets/service-security/jaga-gedung.webp",
+    alt: "Petugas keamanan menjaga gedung",
   },
   {
     no: "03",
     icon: CalendarDays,
     title: "Keamanan Acara & Event",
     body: "Pengamanan untuk berbagai jenis acara seperti konser, seminar, konferensi, dan event lainnya.",
-    photo: "Event Entrance · Crowd Control",
+    photo: "/assets/service-security/jasa-konser.webp",
+    alt: "Petugas keamanan mengamankan acara konser",
   },
   {
     no: "04",
     icon: Footprints,
     title: "Patroli Keamanan",
     body: "Patroli rutin untuk membantu mencegah potensi ancaman atau kejadian yang tidak diinginkan di area yang telah disepakati.",
-    photo: "Security Patrol · Property Perimeter",
+    photo: "/assets/service-security/patroli-keamanan.webp",
+    alt: "Petugas melakukan patroli keamanan",
   },
 ];
 
@@ -78,12 +83,15 @@ export function SecurityServices() {
                 delay={(i % 2) * 0.08}
                 className="group flex flex-col border border-[var(--line-hairline)] bg-white"
               >
-                <div className="relative overflow-hidden">
-                  <Placeholder
-                    label={s.photo}
-                    parallax
-                    className="h-[220px] w-full transition-transform duration-[900ms] ease-[var(--ease-standard)] group-hover:scale-[1.04] sm:h-[240px]"
+                <div className="relative h-[220px] overflow-hidden sm:h-[240px]">
+                  <Image
+                    src={s.photo}
+                    alt={s.alt}
+                    fill
+                    sizes="(max-width: 639px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-[900ms] ease-[var(--ease-standard)] group-hover:scale-[1.04]"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10" />
                   <span className="absolute left-4 top-4 z-20 inline-flex h-9 w-9 items-center justify-center border border-white/25 bg-obsidian/70 text-penjaga backdrop-blur-sm">
                     <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
                   </span>
