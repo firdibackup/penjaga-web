@@ -13,7 +13,7 @@ const DETAILS = [
   { icon: Phone, label: "Telepon Partner", value: "+62 21 632 7390", href: "tel:+62216327390" },
   { icon: Printer, label: "Fax", value: "+62 21 632 7393" },
   { icon: Mail, label: "Email", value: "info@premierutama.co.id", href: "mailto:info@premierutama.co.id" },
-  { icon: Globe, label: "Website", value: "www.premierutama.co.id", href: "https://www.premierutama.co.id" },
+  // { icon: Globe, label: "Website", value: "www.premierutama.co.id", href: "https://www.premierutama.co.id" },
 ];
 
 const inputCls =

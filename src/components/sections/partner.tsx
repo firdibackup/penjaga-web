@@ -17,22 +17,22 @@ const FACTS: { k: string; v: string }[] = [
 
 export function Partner() {
   return (
-    <section id="partner" className="relative bg-white py-[72px] md:py-[128px]">
+    <section id="partner" className="relative overflow-hidden bg-obsidian py-[72px] md:py-[128px]">
       <Container>
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[5fr_7fr] lg:gap-[80px]">
           {/* --- statement --- */}
           <div>
             <Reveal>
-              <Eyebrow>Our Partner</Eyebrow>
+              <Eyebrow onDark>Our Partner</Eyebrow>
             </Reveal>
             <Reveal delay={0.06}>
-              <h2 className="mt-5 max-w-[520px] font-display text-[30px] font-bold uppercase leading-[1] text-obsidian sm:text-[36px] md:text-[44px]">
+              <h2 className="mt-5 max-w-[520px] font-display text-[30px] font-bold uppercase leading-[1] text-white sm:text-[36px] md:text-[44px]">
                 Premier Security & Parking Services — mitra keamanan dan layanan parkir berpengalaman.
               </h2>
             </Reveal>
             <Reveal delay={0.12}>
               <div className="mt-6 flex max-w-[520px] flex-col gap-4">
-                <p className="text-[16.5px] leading-[1.66] text-ink">
+                <p className="text-[16.5px] leading-[1.66] text-white/65">
                   PT Penjaga Utama Indonesia bekerja sama dengan{" "}
                   <span className="font-semibold">
                     Premier Security & Parking Services
@@ -46,11 +46,11 @@ export function Partner() {
           </div>
 
           <Reveal delay={0.1} className="lg:pt-[76px]">
-            <div className="relative overflow-hidden border border-[var(--line-hairline)] bg-[var(--surface-page)] p-2 sm:p-3">
-              <div className="pointer-events-none absolute right-0 top-0 h-24 w-24 border-l border-b border-penjaga/20" />
-              <div className="pointer-events-none absolute bottom-0 left-0 h-24 w-24 border-r border-t border-penjaga/20" />
-              <div className="relative border border-[var(--line-hairline)] bg-white">
-                <div className="flex flex-col gap-5 border-b border-[var(--line-hairline)] bg-[var(--surface-page)] px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-7 sm:py-7">
+            <div className="relative overflow-hidden border border-white/[0.12] bg-charcoal p-2 sm:p-3">
+              <div className="pointer-events-none absolute right-0 top-0 h-24 w-24 border-l border-b border-penjaga/30" />
+              <div className="pointer-events-none absolute bottom-0 left-0 h-24 w-24 border-r border-t border-penjaga/30" />
+              <div className="relative border border-white/[0.12] bg-charcoal">
+                <div className="flex flex-col gap-5 border-b border-white/[0.12] bg-white px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-7 sm:py-7">
                   <Image
                     src="/assets/premier.webp"
                     alt="Premier Security & Parking Services"
@@ -71,12 +71,12 @@ export function Partner() {
                       key={f.k}
                       className={`px-5 py-4 sm:px-6 sm:py-5 ${
                         i % 2 === 0 ? "sm:border-r" : ""
-                      } border-b border-[var(--line-hairline)] last:border-b-0 sm:[&:nth-last-child(2)]:border-b-0`}
+                      } border-b border-white/[0.12] last:border-b-0 sm:[&:nth-last-child(2)]:border-b-0`}
                     >
-                      <dt className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-steel">
+                      <dt className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-white/40">
                         {f.k}
                       </dt>
-                      <dd className="mt-1 text-[14.5px] leading-[1.4] text-ink">
+                      <dd className="mt-1 text-[14.5px] leading-[1.4] text-white/75">
                         {f.v}
                       </dd>
                     </div>
@@ -84,7 +84,7 @@ export function Partner() {
                 </dl>
               </div>
             </div>
-            <p className="mt-4 text-[12.5px] leading-[1.5] text-steel">
+            <p className="mt-4 text-[12.5px] leading-[1.5] text-white/40">
               Premier Security & Parking Services merupakan mitra layanan
               keamanan dan parkir serta entitas hukum yang terpisah dari PT
               Penjaga Utama Indonesia.

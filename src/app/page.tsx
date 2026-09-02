@@ -28,7 +28,7 @@ export default function Home() {
         <ServiceHighlights />
         <About />
         <Partner />
-        <Leadership />
+        {/* <Leadership /> */}
         <TwoPillars />
         <SecurityServices />
         <SmartSecurity />

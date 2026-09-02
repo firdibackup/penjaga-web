@@ -67,8 +67,19 @@ export function SiteHeader() {
             alt="PT Penjaga Utama Indonesia"
             width={706}
             height={159}
-            className="block h-[30px] w-auto max-w-full transition-[filter] duration-300 md:h-[38px]"
-            style={{ filter: solid ? "none" : "brightness(0) invert(1)" }}
+            className="block h-[30px] w-auto max-w-full md:h-[38px]"
+          />
+          <Image
+            src="/assets/logo-penjaga-no-label.svg"
+            alt=""
+            width={706}
+            height={159}
+            aria-hidden
+            className="pointer-events-none absolute left-0 top-0 block h-[30px] w-auto max-w-full brightness-0 invert transition-opacity duration-300 md:h-[38px]"
+            style={{
+              clipPath: "inset(0 0 0 22%)",
+              opacity: solid ? 0 : 1,
+            }}
           />
         </a>
 

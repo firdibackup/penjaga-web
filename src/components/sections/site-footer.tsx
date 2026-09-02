@@ -18,13 +18,24 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[5fr_3fr_4fr] md:gap-12">
           {/* brand */}
           <div>
-            <Image
-              src="/assets/logo-penjaga-no-label.svg"
-              alt="PT Penjaga Utama Indonesia"
-              width={706}
-              height={159}
-              className="h-auto w-[230px] brightness-0 invert sm:w-[270px]"
-            />
+            <div className="relative w-[230px] sm:w-[270px]">
+              <Image
+                src="/assets/logo-penjaga-no-label.svg"
+                alt="PT Penjaga Utama Indonesia"
+                width={706}
+                height={159}
+                className="block h-auto w-full"
+              />
+              <Image
+                src="/assets/logo-penjaga-no-label.svg"
+                alt=""
+                width={706}
+                height={159}
+                aria-hidden
+                className="pointer-events-none absolute inset-0 block h-auto w-full brightness-0 invert"
+                style={{ clipPath: "inset(0 0 0 22%)" }}
+              />
+            </div>
             <p className="mt-5 max-w-[320px] text-[14.5px] leading-[1.6] text-white/55">
               Layanan keamanan dan valet parking profesional untuk gedung,
               perusahaan, properti, hospitality, dan acara.
