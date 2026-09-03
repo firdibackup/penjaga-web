@@ -7,7 +7,7 @@ const FACTS: { k: string; v: string }[] = [
   { k: "Brand", v: "Security & Parking Services" },
   { k: "Legal Entity", v: "PT. Primer Utama Indonesia" },
   { k: "Security & Parking Services", v: "Sejak 2014" },
-  { k: "Telepon", v: "+62 21 632 7390" },
+  { k: "Telepon", v: "0813 8880 1886" },
   { k: "Email", v: "info@penjagaindonesia.com" },
 ];
 
@@ -30,8 +30,10 @@ export function Partner() {
               <div className="mt-6 flex max-w-[520px] flex-col gap-4">
                 <p className="text-[16.5px] leading-[1.66] text-ink">
                   PT Penjaga Utama Indonesia bekerja sama dengan{" "}
-                  <span className="font-semibold">Security & Parking Services</span>,
-                  bagian dari PT. Primer Utama Indonesia, untuk mendukung
+                  <span className="font-semibold">
+                    Security & Parking Services
+                  </span>
+                  , bagian dari PT. Primer Utama Indonesia, untuk mendukung
                   kebutuhan layanan Valet Parking.
                 </p>
               </div>

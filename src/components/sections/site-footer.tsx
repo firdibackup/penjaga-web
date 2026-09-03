@@ -71,11 +71,17 @@ export function SiteFooter() {
               Jl. Suryo Pranoto, Harmoni Plaza II Blok I No.5, Petojo Utara,
               Jakarta Pusat 10130
               <br />
-              <a href="tel:+62216327390" className="text-white/80 no-underline transition-colors hover:text-penjaga">
-                +62 21 632 7390
+              <a
+                href="tel:+6281388801886"
+                className="text-white/80 no-underline transition-colors hover:text-penjaga"
+              >
+                0813 8880 1886
               </a>
               <br />
-              <a href="mailto:info@penjagaindonesia.com" className="text-white/80 no-underline transition-colors hover:text-penjaga">
+              <a
+                href="mailto:info@penjagaindonesia.com"
+                className="text-white/80 no-underline transition-colors hover:text-penjaga"
+              >
                 info@penjagaindonesia.com
               </a>
             </address>
