@@ -35,7 +35,7 @@ export function About() {
       className="relative overflow-hidden bg-operational py-[72px] md:py-[132px]"
     >
       <Container>
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[5fr_7fr] lg:gap-[80px]">
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[6fr_7fr] lg:gap-[80px]">
           {/* --- photo (left) with parallax + diagonal shield crop --- */}
           <Reveal className="lg:sticky lg:top-[120px]">
             <div
@@ -45,17 +45,11 @@ export function About() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <m.img
-                src="/assets/about-briefing.png"
+                src="/assets/about-briefing.webp"
                 alt="Personel Penjaga Utama saat briefing sebelum penugasan"
                 style={{ y: reduce ? 0 : y }}
-                className="absolute left-0 top-[-8%] h-[116%] w-full object-cover [will-change:transform]"
+                className="absolute left-0 top-[-8%] h-[116%] w-full object-cover object-[25%_75%] [will-change:transform]"
               />
-            </div>
-            <div className="mt-5 flex items-center gap-3">
-              <span className="block h-0.5 w-[44px] bg-penjaga" />
-              <span className="font-mono text-[11.5px] uppercase tracking-[0.1em] text-steel">
-                Briefing personel sebelum penugasan
-              </span>
             </div>
           </Reveal>
 

@@ -84,7 +84,7 @@ function Console() {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 gap-px bg-white/[0.08] p-px">
+      <div className="grid grid-cols-2 gap-px bg-white/[0.08] p-px">
         {TILES.map((tile, i) => (
           <div
             key={tile.src}
