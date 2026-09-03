@@ -76,10 +76,6 @@ export function Partner() {
                 ))}
               </dl>
             </div>
-            <p className="mt-4 text-[12.5px] leading-[1.5] text-steel">
-              Security & Parking Services merupakan mitra layanan valet dan
-              entitas hukum yang terpisah dari PT Penjaga Utama Indonesia.
-            </p>
           </Reveal>
         </div>
       </Container>
