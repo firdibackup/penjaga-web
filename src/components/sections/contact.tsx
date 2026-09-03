@@ -1,18 +1,36 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Globe, Mail, MapPin, Phone, Printer } from "lucide-react";
+import { Globe, Mail, MapPin, Phone } from "lucide-react";
 import { Container, Eyebrow } from "@/components/kit";
 import { Reveal } from "@/components/motion/reveal";
 
-const NEEDS = ["Security Service", "Valet Parking", "Security & Valet", "Lainnya"];
+const NEEDS = [
+  "Security Service",
+  "Valet Parking",
+  "Security & Valet",
+  "Lainnya",
+];
 
 const DETAILS = [
-  { icon: Phone, label: "Telepon", value: "(021) 384 0960", href: "tel:+62213840960" },
-  { icon: MapPin, label: "Alamat Partner", value: "Jl. Suryo Pranoto, Harmoni Plaza II Blok I No.5, Petojo Utara, Jakarta Pusat 10130" },
-  { icon: Phone, label: "Telepon Partner", value: "+62 21 632 7390", href: "tel:+62216327390" },
-  { icon: Printer, label: "Fax", value: "+62 21 632 7393" },
-  { icon: Mail, label: "Email", value: "info@premierutama.co.id", href: "mailto:info@premierutama.co.id" },
+  {
+    icon: Phone,
+    label: "Telepon",
+    value: "0813 8880 1886",
+    href: "tel:+6281388801886",
+  },
+  {
+    icon: MapPin,
+    label: "Alamat Partner",
+    value:
+      "Jl. Suryo Pranoto, Harmoni Plaza II Blok I No.5, Petojo Utara, Jakarta Pusat 10130",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "info@penjagaindonesia.com",
+    href: "mailto:info@penjagaindonesia.com",
+  },
   // { icon: Globe, label: "Website", value: "www.premierutama.co.id", href: "https://www.premierutama.co.id" },
 ];
 
@@ -40,7 +58,7 @@ export function Contact() {
       pesan,
     ].join("\n");
     const subject = `Konsultasi ${need} — ${nama || "Website"}`;
-    window.location.href = `mailto:info@premierutama.co.id?subject=${encodeURIComponent(
+    window.location.href = `mailto:info@penjagaindonesia.com?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`;
   };
@@ -70,17 +88,40 @@ export function Contact() {
               <form onSubmit={onSubmit} className="mt-8 flex flex-col gap-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="nama" className={labelCls}>Nama</label>
-                    <input id="nama" name="nama" required className={inputCls} placeholder="Nama Anda" />
+                    <label htmlFor="nama" className={labelCls}>
+                      Nama
+                    </label>
+                    <input
+                      id="nama"
+                      name="nama"
+                      required
+                      className={inputCls}
+                      placeholder="Nama Anda"
+                    />
                   </div>
                   <div>
-                    <label htmlFor="perusahaan" className={labelCls}>Perusahaan / Organisasi</label>
-                    <input id="perusahaan" name="perusahaan" className={inputCls} placeholder="Opsional" />
+                    <label htmlFor="perusahaan" className={labelCls}>
+                      Perusahaan / Organisasi
+                    </label>
+                    <input
+                      id="perusahaan"
+                      name="perusahaan"
+                      className={inputCls}
+                      placeholder="Opsional"
+                    />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="kontak" className={labelCls}>Email / Telepon</label>
-                  <input id="kontak" name="kontak" required className={inputCls} placeholder="Email atau nomor telepon" />
+                  <label htmlFor="kontak" className={labelCls}>
+                    Email / Telepon
+                  </label>
+                  <input
+                    id="kontak"
+                    name="kontak"
+                    required
+                    className={inputCls}
+                    placeholder="Email atau nomor telepon"
+                  />
                 </div>
                 <div>
                   <span className={labelCls}>Kebutuhan Layanan</span>
@@ -103,8 +144,16 @@ export function Contact() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="pesan" className={labelCls}>Pesan</label>
-                  <textarea id="pesan" name="pesan" rows={4} className={`${inputCls} h-auto py-3`} placeholder="Ceritakan kebutuhan Anda" />
+                  <label htmlFor="pesan" className={labelCls}>
+                    Pesan
+                  </label>
+                  <textarea
+                    id="pesan"
+                    name="pesan"
+                    rows={4}
+                    className={`${inputCls} h-auto py-3`}
+                    placeholder="Ceritakan kebutuhan Anda"
+                  />
                 </div>
                 <button
                   type="submit"
@@ -112,10 +161,6 @@ export function Contact() {
                 >
                   Konsultasikan Kebutuhan
                 </button>
-                <p className="text-[12px] leading-[1.5] text-steel">
-                  Mengirim akan membuka aplikasi email Anda menuju
-                  info@premierutama.co.id.
-                </p>
               </form>
             </Reveal>
           </div>
@@ -135,7 +180,10 @@ export function Contact() {
                   const inner = (
                     <div className="flex items-start gap-4 py-4">
                       <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center border border-[var(--line-hairline)] bg-white text-penjaga">
-                        <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
+                        <Icon
+                          className="h-[18px] w-[18px]"
+                          strokeWidth={1.75}
+                        />
                       </span>
                       <span className="min-w-0">
                         <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-steel">
@@ -148,7 +196,11 @@ export function Contact() {
                     </div>
                   );
                   return d.href ? (
-                    <a key={d.label} href={d.href} className="no-underline transition-colors hover:text-penjaga [&_*]:transition-colors hover:[&_.text-ink]:text-penjaga">
+                    <a
+                      key={d.label}
+                      href={d.href}
+                      className="no-underline transition-colors hover:text-penjaga [&_*]:transition-colors hover:[&_.text-ink]:text-penjaga"
+                    >
                       {inner}
                     </a>
                   ) : (
@@ -156,10 +208,6 @@ export function Contact() {
                   );
                 })}
               </div>
-              <p className="mt-6 border-l-[3px] border-penjaga pl-4 text-[12px] leading-[1.55] text-steel">
-                Kontak di atas merupakan kontak partner valet, Premier Valet /
-                PT. Primer Utama Indonesia.
-              </p>
             </div>
           </Reveal>
         </div>

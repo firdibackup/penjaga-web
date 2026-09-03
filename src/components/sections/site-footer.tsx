@@ -75,8 +75,8 @@ export function SiteFooter() {
                 +62 21 632 7390
               </a>
               <br />
-              <a href="mailto:info@premierutama.co.id" className="text-white/80 no-underline transition-colors hover:text-penjaga">
-                info@premierutama.co.id
+              <a href="mailto:info@penjagaindonesia.com" className="text-white/80 no-underline transition-colors hover:text-penjaga">
+                info@penjagaindonesia.com
               </a>
             </address>
           </div>

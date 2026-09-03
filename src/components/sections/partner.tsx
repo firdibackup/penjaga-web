@@ -8,7 +8,7 @@ const FACTS: { k: string; v: string }[] = [
   { k: "Legal Entity", v: "PT. Primer Utama Indonesia" },
   { k: "Security & Parking Services", v: "Sejak 2014" },
   { k: "Telepon", v: "+62 21 632 7390" },
-  { k: "Email", v: "info@premierutama.co.id" },
+  { k: "Email", v: "info@penjagaindonesia.com" },
 ];
 
 export function Partner() {

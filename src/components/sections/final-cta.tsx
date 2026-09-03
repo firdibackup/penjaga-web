@@ -53,11 +53,11 @@ export function FinalCTA() {
                 <ArrowRight className="h-4 w-4" strokeWidth={2} />
               </a>
               <a
-                href="tel:+62213840960"
+                href="tel:+6281388801886"
                 className="inline-flex h-[54px] items-center justify-center gap-3 rounded-[2px] border border-white/40 px-8 text-[13px] font-semibold uppercase tracking-[0.14em] text-white no-underline transition-colors duration-150 hover:border-white hover:bg-white hover:text-obsidian"
               >
                 <Phone className="h-4 w-4" strokeWidth={1.75} />
-                Hubungi (021) 384 0960
+                Hubungi 0813 8880 1886
               </a>
             </div>
           </Reveal>
